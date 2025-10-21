@@ -5,6 +5,7 @@ namespace Tests\Unit\Services;
 use Tests\TestCase;
 use App\Services\PortugueseLaborLawService;
 use App\Models\Employee;
+use App\Models\LeaveType;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -18,6 +19,9 @@ class PortugueseLaborLawServiceTest extends TestCase
     {
         parent::setUp();
         $this->service = new PortugueseLaborLawService();
+        
+        // Seed leave types for testing
+        $this->seed(\Database\Seeders\LeaveTypeSeeder::class);
     }
 
     public function test_overtime_rate_calculation_first_two_hours(): void

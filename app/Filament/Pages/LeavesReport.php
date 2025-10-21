@@ -23,7 +23,7 @@ class LeavesReport extends Page implements HasTable
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-document-chart-bar';
     protected static string|UnitEnum|null $navigationGroup = 'Reports';
     protected static ?int $navigationSort = 2;
-    protected static string $view = 'filament.pages.leaves-report';
+    protected string $view = 'filament.pages.leaves-report';
 
     public ?int $year = null;
 

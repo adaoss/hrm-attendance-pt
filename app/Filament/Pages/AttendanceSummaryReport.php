@@ -21,7 +21,7 @@ class AttendanceSummaryReport extends Page implements HasTable
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-clock';
     protected static string|UnitEnum|null $navigationGroup = 'Reports';
     protected static ?int $navigationSort = 3;
-    protected static string $view = 'filament.pages.attendance-summary-report';
+    protected string $view = 'filament.pages.attendance-summary-report';
 
     public ?int $year = null;
     public ?int $month = null;
