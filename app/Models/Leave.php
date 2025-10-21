@@ -63,17 +63,28 @@ class Leave extends Model
     }
 
     /**
+     * Get the leave type details from database
+     */
+    public function leaveTypeDetails()
+    {
+        return $this->belongsTo(LeaveType::class, 'leave_type', 'code');
+    }
+
+    /**
      * Get maximum days allowed for leave type based on Portuguese law
+     * Now fetches from database instead of hardcoded values
      */
     public static function getMaxDaysForType(string $type): ?int
     {
-        return match($type) {
-            self::TYPE_VACATION => 22,
-            self::TYPE_MATERNITY => 150,
-            self::TYPE_PATERNITY => 28,
-            self::TYPE_MARRIAGE => 15,
-            self::TYPE_BEREAVEMENT => 5,
-            default => null,
-        };
+        $leaveType = LeaveType::where('code', $type)
+            ->where('is_active', true)
+            ->first();
+
+        if (!$leaveType) {
+            return null;
+        }
+
+        // Return max_days if set, otherwise days_entitled
+        return $leaveType->max_days ?? $leaveType->days_entitled;
     }
 }

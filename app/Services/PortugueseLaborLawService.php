@@ -201,38 +201,41 @@ class PortugueseLaborLawService
 
     /**
      * Get leave entitlement for specific leave type
-     * Based on Portuguese Labor Code
+     * Based on Portuguese Labor Code - now fetches from database
      */
-    public function getLeaveEntitlement(string $leaveType): ?array
+    public function getLeaveEntitlement(string $leaveTypeCode): ?array
     {
-        return match($leaveType) {
-            Leave::TYPE_VACATION => [
-                'days' => 22,
-                'description' => 'Annual vacation (Article 238)',
-                'paid' => true
-            ],
-            Leave::TYPE_MATERNITY => [
-                'days' => 150,
-                'min_days' => 120,
-                'description' => 'Maternity leave (120-150 days, Article 40)',
-                'paid' => true
-            ],
-            Leave::TYPE_PATERNITY => [
-                'days' => 28,
-                'description' => 'Paternity leave (28 days, Article 43)',
-                'paid' => true
-            ],
-            Leave::TYPE_MARRIAGE => [
-                'days' => 15,
-                'description' => 'Marriage leave (15 days, Article 252)',
-                'paid' => true
-            ],
-            Leave::TYPE_BEREAVEMENT => [
-                'days' => 5,
-                'description' => 'Bereavement leave (5 days, Article 252)',
-                'paid' => true
-            ],
-            default => null
-        };
+        $leaveType = \App\Models\LeaveType::where('code', $leaveTypeCode)
+            ->where('is_active', true)
+            ->first();
+
+        if (!$leaveType) {
+            return null;
+        }
+
+        $result = [
+            'code' => $leaveType->code,
+            'name' => $leaveType->name,
+            'description' => $leaveType->description,
+            'paid' => $leaveType->is_paid,
+        ];
+
+        if ($leaveType->days_entitled) {
+            $result['days'] = $leaveType->days_entitled;
+        }
+
+        if ($leaveType->min_days) {
+            $result['min_days'] = $leaveType->min_days;
+        }
+
+        if ($leaveType->max_days) {
+            $result['max_days'] = $leaveType->max_days;
+        }
+
+        if ($leaveType->metadata) {
+            $result['metadata'] = $leaveType->metadata;
+        }
+
+        return $result;
     }
 }
