@@ -6,8 +6,8 @@ use App\Filament\Resources\EmployeeResource\Pages;
 use App\Models\Employee;
 use BackedEnum;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use UnitEnum;
@@ -19,10 +19,10 @@ class EmployeeResource extends Resource
     protected static string|UnitEnum|null $navigationGroup = 'HRM';
     protected static ?int $navigationSort = 1;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Forms\Components\Section::make('Personal Information')
                     ->schema([
                         Forms\Components\TextInput::make('employee_number')
