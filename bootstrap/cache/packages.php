@@ -55,6 +55,13 @@
       0 => 'Filament\\Notifications\\NotificationsServiceProvider',
     ),
   ),
+  'filament/schemas' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Filament\\Schemas\\SchemasServiceProvider',
+    ),
+  ),
   'filament/support' => 
   array (
     'providers' => 

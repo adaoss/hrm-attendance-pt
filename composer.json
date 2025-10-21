@@ -6,11 +6,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.0",
-        "filament/filament": "^3.2"
+        "laravel/framework": "^12.0",
+        "filament/filament": "^4.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
+        "filament/upgrade": "^4.0",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
