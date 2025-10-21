@@ -297,9 +297,26 @@ This application implements the following articles from the Portuguese Labor Cod
 - SQL injection prevention
 - XSS protection
 
+## Documentation
+
+This project includes comprehensive documentation:
+
+- **[README.md](README.md)** - This file, main project documentation
+- **[QUICKSTART.md](QUICKSTART.md)** - Get started in 15 minutes
+- **[INSTALLATION.md](INSTALLATION.md)** - Complete installation guide
+- **[PORTUGUESE_LABOR_LAWS.md](PORTUGUESE_LABOR_LAWS.md)** - Detailed legal compliance guide
+- **[ZKTECO_INTEGRATION.md](ZKTECO_INTEGRATION.md)** - ZKTeco device integration manual
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guidelines for contributing
+- **[CHANGELOG.md](CHANGELOG.md)** - Version history and changes
+- **[PROJECT_SUMMARY.md](PROJECT_SUMMARY.md)** - Complete project overview
+
 ## Support
 
-For issues, questions, or contributions, please open an issue on GitHub.
+For issues, questions, or contributions:
+- **Issues**: https://github.com/adaoss/hrm-attendance-pt/issues
+- **Documentation**: See the guides listed above
+- **Laravel Help**: https://laravel.com/docs
+- **Filament Help**: https://filamentphp.com/docs
 
 ## License
 
