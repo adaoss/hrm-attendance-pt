@@ -62,12 +62,25 @@ class TeamStatsOverview extends StatsOverviewWidget
             ? round(($actualAttendances / $expectedAttendances) * 100, 1) 
             : 0;
 
+        // Calculate employee counts for the past 8 months
+        $employeeCounts = [];
+        for ($i = 7; $i >= 0; $i--) {
+            $month = Carbon::now()->subMonths($i);
+            $count = Employee::when($teamId, function ($query, $teamId) {
+                    return $query->where('team_id', $teamId);
+                })
+                ->where('is_active', true)
+                ->whereDate('created_at', '<=', $month->endOfMonth())
+                ->count();
+            $employeeCounts[] = $count;
+        }
+
         return [
             Stat::make('Total Employees', $totalEmployees)
                 ->description('Active employees in the team')
                 ->descriptionIcon('heroicon-m-user-group')
                 ->color('success')
-                ->chart([7, 3, 4, 5, 6, 3, 5, 3]),
+                ->chart($employeeCounts),
             
             Stat::make('Departments', $totalDepartments)
                 ->description('Organizational units')
