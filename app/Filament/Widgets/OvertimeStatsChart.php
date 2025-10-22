@@ -43,7 +43,11 @@ class OvertimeStatsChart extends ChartWidget
                 ],
             ],
             'labels' => $topOvertime->map(function ($item) {
-                return $item->employee->first_name . ' ' . substr($item->employee->last_name, 0, 1) . '.';
+                if ($item->employee) {
+                    return $item->employee->first_name . ' ' . substr($item->employee->last_name, 0, 1) . '.';
+                } else {
+                    return 'Unknown';
+                }
             })->toArray(),
         ];
     }
