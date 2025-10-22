@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employee extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, BelongsToTeam;
 
     protected $fillable = [
         'employee_number',
@@ -27,6 +28,7 @@ class Employee extends Model
         'contract_type', // permanent, fixed-term, temporary
         'weekly_hours',
         'is_active',
+        'team_id',
     ];
 
     protected $casts = [

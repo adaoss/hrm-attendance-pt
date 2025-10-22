@@ -1,0 +1,54 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        // Add team_id to users table
+        Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('team_id')->nullable()->after('id')->constrained()->nullOnDelete();
+        });
+
+        // Add team_id to departments table
+        Schema::table('departments', function (Blueprint $table) {
+            $table->foreignId('team_id')->nullable()->after('id')->constrained()->nullOnDelete();
+        });
+
+        // Add team_id to work_schedules table
+        Schema::table('work_schedules', function (Blueprint $table) {
+            $table->foreignId('team_id')->nullable()->after('id')->constrained()->nullOnDelete();
+        });
+
+        // Add team_id to employees table
+        Schema::table('employees', function (Blueprint $table) {
+            $table->foreignId('team_id')->nullable()->after('id')->constrained()->nullOnDelete();
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['team_id']);
+            $table->dropColumn('team_id');
+        });
+
+        Schema::table('departments', function (Blueprint $table) {
+            $table->dropForeign(['team_id']);
+            $table->dropColumn('team_id');
+        });
+
+        Schema::table('work_schedules', function (Blueprint $table) {
+            $table->dropForeign(['team_id']);
+            $table->dropColumn('team_id');
+        });
+
+        Schema::table('employees', function (Blueprint $table) {
+            $table->dropForeign(['team_id']);
+            $table->dropColumn('team_id');
+        });
+    }
+};

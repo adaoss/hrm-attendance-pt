@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class WorkSchedule extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToTeam;
 
     protected $fillable = [
         'name',
@@ -29,6 +30,7 @@ class WorkSchedule extends Model
         'break_duration', // in minutes
         'weekly_hours',
         'is_active',
+        'team_id',
     ];
 
     protected $casts = [
