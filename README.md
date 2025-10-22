@@ -5,6 +5,7 @@ A comprehensive Human Resource Management and Attendance system built with **Lar
 ## Features
 
 ### 🏢 Core HRM Functionality
+- **Multi-Tenancy Support** ⭐ NEW: Complete data isolation for multiple organizations/teams
 - **Employee Management**: Complete employee records with Portuguese NIF and NISS
 - **Department Management**: Organize employees by departments with managers
 - **Work Schedules**: Flexible scheduling system with weekly hour tracking
@@ -319,6 +320,7 @@ This project includes comprehensive documentation:
 - **[README.md](README.md)** - This file, main project documentation
 - **[QUICKSTART.md](QUICKSTART.md)** - Get started in 15 minutes
 - **[INSTALLATION.md](INSTALLATION.md)** - Complete installation guide
+- **[TENANCY.md](TENANCY.md)** ⭐ NEW - Multi-tenancy implementation guide
 - **[PORTUGUESE_LABOR_LAWS.md](PORTUGUESE_LABOR_LAWS.md)** - Detailed legal compliance guide
 - **[ZKTECO_INTEGRATION.md](ZKTECO_INTEGRATION.md)** - ZKTeco device integration manual
 - **[CONTRIBUTING.md](CONTRIBUTING.md)** - Guidelines for contributing
