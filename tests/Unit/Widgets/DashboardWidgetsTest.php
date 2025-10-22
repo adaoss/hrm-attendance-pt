@@ -85,18 +85,48 @@ class DashboardWidgetsTest extends TestCase
 
     public function test_widgets_have_correct_sort_order()
     {
-        $this->assertEquals(1, TeamStatsOverview::getSort());
-        $this->assertEquals(2, EmployeesByDepartmentChart::getSort());
-        $this->assertEquals(3, AttendanceTrendChart::getSort());
-        $this->assertEquals(4, LeaveBalanceWidget::getSort());
-        $this->assertEquals(5, OvertimeStatsChart::getSort());
-        $this->assertEquals(6, PendingApprovalsWidget::getSort());
+        // Verify widgets have sort property defined
+        // This ensures they appear in the correct order on the dashboard
+        $reflection = new \ReflectionClass(TeamStatsOverview::class);
+        $property = $reflection->getProperty('sort');
+        $property->setAccessible(true);
+        $this->assertEquals(1, $property->getDefaultValue());
+        
+        $reflection = new \ReflectionClass(EmployeesByDepartmentChart::class);
+        $property = $reflection->getProperty('sort');
+        $property->setAccessible(true);
+        $this->assertEquals(2, $property->getDefaultValue());
+        
+        $reflection = new \ReflectionClass(AttendanceTrendChart::class);
+        $property = $reflection->getProperty('sort');
+        $property->setAccessible(true);
+        $this->assertEquals(3, $property->getDefaultValue());
+        
+        $reflection = new \ReflectionClass(LeaveBalanceWidget::class);
+        $property = $reflection->getProperty('sort');
+        $property->setAccessible(true);
+        $this->assertEquals(4, $property->getDefaultValue());
+        
+        $reflection = new \ReflectionClass(OvertimeStatsChart::class);
+        $property = $reflection->getProperty('sort');
+        $property->setAccessible(true);
+        $this->assertEquals(5, $property->getDefaultValue());
+        
+        $reflection = new \ReflectionClass(PendingApprovalsWidget::class);
+        $property = $reflection->getProperty('sort');
+        $property->setAccessible(true);
+        $this->assertEquals(6, $property->getDefaultValue());
     }
 
     public function test_team_stats_overview_returns_stats_with_no_data()
     {
         $widget = new TeamStatsOverview();
-        $stats = $widget->getStats();
+        
+        // Use reflection to access protected method
+        $reflection = new \ReflectionClass($widget);
+        $method = $reflection->getMethod('getStats');
+        $method->setAccessible(true);
+        $stats = $method->invoke($widget);
         
         $this->assertIsArray($stats);
         $this->assertCount(5, $stats); // Should have 5 stats
@@ -112,7 +142,12 @@ class DashboardWidgetsTest extends TestCase
         ]);
 
         $widget = new EmployeesByDepartmentChart();
-        $data = $widget->getData();
+        
+        // Use reflection to access protected method
+        $reflection = new \ReflectionClass($widget);
+        $method = $reflection->getMethod('getData');
+        $method->setAccessible(true);
+        $data = $method->invoke($widget);
         
         $this->assertIsArray($data);
         $this->assertArrayHasKey('datasets', $data);
@@ -122,7 +157,12 @@ class DashboardWidgetsTest extends TestCase
     public function test_attendance_trend_chart_returns_data()
     {
         $widget = new AttendanceTrendChart();
-        $data = $widget->getData();
+        
+        // Use reflection to access protected method
+        $reflection = new \ReflectionClass($widget);
+        $method = $reflection->getMethod('getData');
+        $method->setAccessible(true);
+        $data = $method->invoke($widget);
         
         $this->assertIsArray($data);
         $this->assertArrayHasKey('datasets', $data);
@@ -132,7 +172,12 @@ class DashboardWidgetsTest extends TestCase
     public function test_leave_balance_widget_returns_stats()
     {
         $widget = new LeaveBalanceWidget();
-        $stats = $widget->getStats();
+        
+        // Use reflection to access protected method
+        $reflection = new \ReflectionClass($widget);
+        $method = $reflection->getMethod('getStats');
+        $method->setAccessible(true);
+        $stats = $method->invoke($widget);
         
         $this->assertIsArray($stats);
         $this->assertCount(5, $stats); // Should have 5 stats
@@ -141,7 +186,12 @@ class DashboardWidgetsTest extends TestCase
     public function test_overtime_stats_chart_returns_data()
     {
         $widget = new OvertimeStatsChart();
-        $data = $widget->getData();
+        
+        // Use reflection to access protected method
+        $reflection = new \ReflectionClass($widget);
+        $method = $reflection->getMethod('getData');
+        $method->setAccessible(true);
+        $data = $method->invoke($widget);
         
         $this->assertIsArray($data);
         $this->assertArrayHasKey('datasets', $data);
@@ -172,7 +222,12 @@ class DashboardWidgetsTest extends TestCase
 
         // Check that widget only shows our team's data
         $widget = new EmployeesByDepartmentChart();
-        $data = $widget->getData();
+        
+        // Use reflection to access protected method
+        $reflection = new \ReflectionClass($widget);
+        $method = $reflection->getMethod('getData');
+        $method->setAccessible(true);
+        $data = $method->invoke($widget);
         
         $this->assertIsArray($data['labels']);
         $this->assertContains('Our Department', $data['labels']);
