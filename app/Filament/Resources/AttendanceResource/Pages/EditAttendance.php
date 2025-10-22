@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\AttendanceResource\Pages;
 
-use App\Filament\Resources\AttendanceResource;
+use App\Filament\Resources\AttendanceResource\AttendanceResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
