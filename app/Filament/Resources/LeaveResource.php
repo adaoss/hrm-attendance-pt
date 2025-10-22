@@ -5,24 +5,26 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\LeaveResource\Pages;
 use App\Models\Leave;
 use App\Services\PortugueseLaborLawService;
+use BackedEnum;
 use Filament\Forms;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Filament\Notifications\Notification;
+use UnitEnum;
 
 class LeaveResource extends Resource
 {
     protected static ?string $model = Leave::class;
-    protected static ?string $navigationIcon = 'heroicon-o-calendar-days';
-    protected static ?string $navigationGroup = 'Attendance';
+    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-calendar-days';
+    protected static string|UnitEnum|null $navigationGroup = 'Attendance';
     protected static ?int $navigationSort = 2;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Forms\Components\Select::make('employee_id')
                     ->relationship('employee', 'first_name')
                     ->searchable()

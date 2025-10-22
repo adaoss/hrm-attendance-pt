@@ -1,6 +1,6 @@
 # HRM Attendance PT - Portuguese Labor Law Compliance System
 
-A comprehensive Human Resource Management and Attendance system built with Laravel 11 and Filament 4.1, specifically designed to comply with Portuguese labor laws (Código do Trabalho) and integrated with ZKTeco biometric attendance devices.
+A comprehensive Human Resource Management and Attendance system built with **Laravel 12** and **Filament 4.1**, specifically designed to comply with Portuguese labor laws (Código do Trabalho) and integrated with ZKTeco biometric attendance devices.
 
 ## Features
 
@@ -40,7 +40,8 @@ A comprehensive Human Resource Management and Attendance system built with Larav
 - Proportional calculation for first year
 - Vacation balance tracking
 
-#### Leave Types
+#### Database-Driven Leave Types ⭐ NEW
+All leave types are now stored in the database for easy configuration and management:
 - **Férias** (Vacation): 22 days/year
 - **Licença de Maternidade** (Maternity): 120-150 days
 - **Licença de Paternidade** (Paternity): 28 days
@@ -61,6 +62,20 @@ A comprehensive Human Resource Management and Attendance system built with Larav
 - Employee registration on devices
 - Device connection testing
 - Support for multiple devices
+
+### 📊 Comprehensive Reporting System ⭐ NEW
+- **Wage Reports**: Track employee salaries, overtime pay, bonuses, and deductions
+  - Monthly wage calculations with gross and net pay
+  - Overtime hours and compensation tracking
+  - Payment status management
+- **Leave Usage Reports**: Comprehensive leave analytics
+  - Vacation days, sick days, and other leave types
+  - Year-over-year comparison
+  - Employee-by-employee breakdown
+- **Attendance Summary Reports**: Detailed attendance metrics
+  - Days present, absent, and late arrivals
+  - Total hours, regular hours, and overtime hours
+  - Monthly summaries with department filtering
 
 ### 📊 Filament Admin Panel
 - Modern, responsive UI built with Filament 4.1
@@ -281,7 +296,7 @@ This application implements the following articles from the Portuguese Labor Cod
 
 ## Technology Stack
 
-- **Framework**: Laravel 11
+- **Framework**: Laravel 12
 - **Admin Panel**: Filament 4.1
 - **Database**: MySQL/PostgreSQL
 - **PHP**: 8.2+
