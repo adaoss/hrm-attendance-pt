@@ -5,6 +5,30 @@ All notable changes to the HRM Attendance PT project will be documented in this 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+**Multi-Tenancy Support**
+- Teams table for managing multiple organizations/companies
+- Team model with relationships to users, employees, departments, work schedules, and holidays
+- BelongsToTeam trait for automatic team scoping and filtering
+- Global scopes to ensure data isolation between teams
+- Team Filament resource for admin panel management
+- TeamSeeder for creating default team
+- Comprehensive TENANCY.md documentation
+- Unit tests for team functionality (TeamScopingTest)
+
+**Database Changes**
+- Added `team_id` foreign key to: users, employees, departments, work_schedules, holidays
+- Three new migrations for team support
+- JSON settings field on teams table for team-specific configuration
+
+**Documentation**
+- TENANCY.md guide covering architecture, usage, and best practices
+- Updated README.md to highlight multi-tenancy feature
+- Code examples and troubleshooting guide
+
 ## [1.0.0] - 2025-01-21
 
 ### Initial Release
