@@ -42,10 +42,20 @@ class TestDataSeeder extends Seeder
         // Create work schedule (40 hours per week, standard Portuguese schedule)
         $workSchedule = WorkSchedule::create([
             'name' => 'Standard Schedule',
-            'start_time' => '09:00:00',
-            'end_time' => '18:00:00',
+            'description' => 'Monday to Friday, 9:00 AM to 6:00 PM',
+            'monday_start' => '09:00:00',
+            'monday_end' => '18:00:00',
+            'tuesday_start' => '09:00:00',
+            'tuesday_end' => '18:00:00',
+            'wednesday_start' => '09:00:00',
+            'wednesday_end' => '18:00:00',
+            'thursday_start' => '09:00:00',
+            'thursday_end' => '18:00:00',
+            'friday_start' => '09:00:00',
+            'friday_end' => '18:00:00',
             'break_duration' => 60, // 1 hour lunch break
             'weekly_hours' => 40,
+            'is_active' => true,
             'team_id' => $team->id,
         ]);
 
