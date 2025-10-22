@@ -2,7 +2,7 @@
 
 namespace App\Filament\Resources\WageResource\Pages;
 
-use App\Filament\Resources\WageResource;
+use App\Filament\Resources\WageResource\WageResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

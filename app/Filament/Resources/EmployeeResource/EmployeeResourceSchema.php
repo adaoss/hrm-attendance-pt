@@ -1,27 +1,15 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\EmployeeResource;
 
-use App\Filament\Resources\EmployeeResource\Pages;
-use App\Models\Employee;
-use BackedEnum;
 use Filament\Forms;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Tables;
-use Filament\Tables\Table;
-use UnitEnum;
 
-class EmployeeResource extends Resource
+class EmployeeResourceSchema
 {
-    protected static ?string $model = Employee::class;
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-user-group';
-    protected static string|UnitEnum|null $navigationGroup = 'HRM';
-    protected static ?int $navigationSort = 1;
-
-    public static function form(Schema $schema): Schema
+    public static function schema(): Schema
     {
-        return $schema
+        return Schema::make()
             ->components([
                 Forms\Components\Section::make('Personal Information')
                     ->schema([
@@ -104,66 +92,5 @@ class EmployeeResource extends Resource
                     ->required()
                     ->default(true),
             ]);
-    }
-
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('employee_number')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('full_name')
-                    ->label('Name')
-                    ->searchable(['first_name', 'last_name'])
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('email')
-                    ->searchable()
-                    ->copyable(),
-                Tables\Columns\TextColumn::make('department.name')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('position')
-                    ->searchable(),
-                Tables\Columns\IconColumn::make('is_active')
-                    ->boolean(),
-                Tables\Columns\TextColumn::make('hire_date')
-                    ->date()
-                    ->sortable(),
-            ])
-            ->filters([
-                Tables\Filters\SelectFilter::make('department')
-                    ->relationship('department', 'name'),
-                Tables\Filters\TernaryFilter::make('is_active')
-                    ->label('Active')
-                    ->boolean()
-                    ->trueLabel('Active employees')
-                    ->falseLabel('Inactive employees'),
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\ViewAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
-
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListEmployees::route('/'),
-            'create' => Pages\CreateEmployee::route('/create'),
-            'edit' => Pages\EditEmployee::route('/{record}/edit'),
-        ];
     }
 }

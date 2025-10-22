@@ -1,28 +1,15 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\WageResource;
 
-use App\Filament\Resources\WageResource\Pages;
-use App\Models\Wage;
-use BackedEnum;
 use Filament\Forms;
-use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
-use Filament\Tables;
-use Filament\Tables\Table;
-use UnitEnum;
 
-class WageResource extends Resource
+class WageResourceSchema
 {
-    protected static ?string $model = Wage::class;
-    protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-currency-euro';
-    protected static string|UnitEnum|null $navigationGroup = 'Reports';
-    protected static ?int $navigationSort = 1;
-    protected static ?string $navigationLabel = 'Wages';
-
-    public static function form(Schema $schema): Schema
+    public static function schema(): Schema
     {
-        return $schema
+        return Schema::make()
             ->components([
                 Forms\Components\Section::make('Employee & Period')
                     ->schema([
@@ -106,80 +93,5 @@ class WageResource extends Resource
                             ->required(),
                     ])->columns(2),
             ]);
-    }
-
-    public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('employee.full_name')
-                    ->label('Employee')
-                    ->searchable(['first_name', 'last_name'])
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('year')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('month')
-                    ->formatStateUsing(fn ($state) => date('F', mktime(0, 0, 0, $state, 1)))
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('base_salary')
-                    ->money('EUR')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('overtime_hours')
-                    ->suffix(' h')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('overtime_pay')
-                    ->money('EUR')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('gross_pay')
-                    ->money('EUR')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('net_pay')
-                    ->money('EUR')
-                    ->sortable(),
-                Tables\Columns\BadgeColumn::make('status')
-                    ->colors([
-                        'warning' => 'pending',
-                        'info' => 'calculated',
-                        'success' => 'paid',
-                    ]),
-            ])
-            ->filters([
-                Tables\Filters\SelectFilter::make('employee')
-                    ->relationship('employee', 'first_name'),
-                Tables\Filters\SelectFilter::make('year')
-                    ->options(function () {
-                        $currentYear = date('Y');
-                        return array_combine(
-                            range($currentYear - 5, $currentYear + 1),
-                            range($currentYear - 5, $currentYear + 1)
-                        );
-                    }),
-                Tables\Filters\SelectFilter::make('status')
-                    ->options([
-                        'pending' => 'Pending',
-                        'calculated' => 'Calculated',
-                        'paid' => 'Paid',
-                    ]),
-            ])
-            ->defaultSort('year', 'desc')
-            ->defaultSort('month', 'desc')
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListWages::route('/'),
-            'create' => Pages\CreateWage::route('/create'),
-            'edit' => Pages\EditWage::route('/{record}/edit'),
-        ];
     }
 }
