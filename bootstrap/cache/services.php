@@ -36,14 +36,12 @@
     32 => 'Filament\\Tables\\TablesServiceProvider',
     33 => 'Filament\\Widgets\\WidgetsServiceProvider',
     34 => 'Kirschbaum\\PowerJoins\\PowerJoinsServiceProvider',
-    35 => 'Laravel\\Sail\\SailServiceProvider',
-    36 => 'Livewire\\LivewireServiceProvider',
-    37 => 'Carbon\\Laravel\\ServiceProvider',
-    38 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    39 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    40 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
-    41 => 'App\\Providers\\AppServiceProvider',
-    42 => 'App\\Providers\\Filament\\AdminPanelProvider',
+    35 => 'Livewire\\LivewireServiceProvider',
+    36 => 'Carbon\\Laravel\\ServiceProvider',
+    37 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    38 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
+    39 => 'App\\Providers\\AppServiceProvider',
+    40 => 'App\\Providers\\Filament\\AdminPanelProvider',
   ),
   'eager' => 
   array (
@@ -71,11 +69,10 @@
     21 => 'Kirschbaum\\PowerJoins\\PowerJoinsServiceProvider',
     22 => 'Livewire\\LivewireServiceProvider',
     23 => 'Carbon\\Laravel\\ServiceProvider',
-    24 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    25 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    26 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
-    27 => 'App\\Providers\\AppServiceProvider',
-    28 => 'App\\Providers\\Filament\\AdminPanelProvider',
+    24 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    25 => 'RyanChandler\\BladeCaptureDirective\\BladeCaptureDirectiveServiceProvider',
+    26 => 'App\\Providers\\AppServiceProvider',
+    27 => 'App\\Providers\\Filament\\AdminPanelProvider',
   ),
   'deferred' => 
   array (
@@ -230,8 +227,6 @@
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'Illuminate\\Contracts\\Validation\\UncompromisedVerifier' => 'Illuminate\\Validation\\ValidationServiceProvider',
-    'Laravel\\Sail\\Console\\InstallCommand' => 'Laravel\\Sail\\SailServiceProvider',
-    'Laravel\\Sail\\Console\\PublishCommand' => 'Laravel\\Sail\\SailServiceProvider',
   ),
   'when' => 
   array (
@@ -272,9 +267,6 @@
     array (
     ),
     'Illuminate\\Validation\\ValidationServiceProvider' => 
-    array (
-    ),
-    'Laravel\\Sail\\SailServiceProvider' => 
     array (
     ),
   ),
