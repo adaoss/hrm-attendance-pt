@@ -18,6 +18,7 @@ class User extends Authenticatable implements FilamentUser
         'password',
         'employee_id',
         'is_admin',
+        'team_id',
     ];
 
     protected $hidden = [
@@ -37,6 +38,11 @@ class User extends Authenticatable implements FilamentUser
     public function employee()
     {
         return $this->belongsTo(Employee::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 
     public function canAccessPanel(Panel $panel): bool

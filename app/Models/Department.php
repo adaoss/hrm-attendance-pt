@@ -14,6 +14,7 @@ class Department extends Model
         'code',
         'description',
         'manager_id',
+        'team_id',
     ];
 
     public function manager()
@@ -24,5 +25,10 @@ class Department extends Model
     public function employees()
     {
         return $this->hasMany(Employee::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 }

@@ -27,6 +27,7 @@ class Employee extends Model
         'contract_type', // permanent, fixed-term, temporary
         'weekly_hours',
         'is_active',
+        'team_id',
     ];
 
     protected $casts = [
@@ -44,6 +45,11 @@ class Employee extends Model
     public function workSchedule()
     {
         return $this->belongsTo(WorkSchedule::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 
     public function attendances()

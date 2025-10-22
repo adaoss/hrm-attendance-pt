@@ -15,6 +15,7 @@ class Holiday extends Model
         'is_national',
         'is_recurring',
         'description',
+        'team_id',
     ];
 
     protected $casts = [
@@ -22,6 +23,11 @@ class Holiday extends Model
         'is_national' => 'boolean',
         'is_recurring' => 'boolean',
     ];
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
 
     /**
      * Portuguese national holidays as per law

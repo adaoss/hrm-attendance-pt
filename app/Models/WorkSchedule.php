@@ -29,6 +29,7 @@ class WorkSchedule extends Model
         'break_duration', // in minutes
         'weekly_hours',
         'is_active',
+        'team_id',
     ];
 
     protected $casts = [
@@ -40,6 +41,11 @@ class WorkSchedule extends Model
     public function employees()
     {
         return $this->hasMany(Employee::class);
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 
     /**
