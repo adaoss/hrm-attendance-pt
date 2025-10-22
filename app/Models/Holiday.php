@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Holiday extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToTeam;
 
     protected $fillable = [
         'name',
@@ -23,11 +24,6 @@ class Holiday extends Model
         'is_national' => 'boolean',
         'is_recurring' => 'boolean',
     ];
-
-    public function team()
-    {
-        return $this->belongsTo(Team::class);
-    }
 
     /**
      * Portuguese national holidays as per law

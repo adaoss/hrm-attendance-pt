@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Concerns\BelongsToTeam;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Employee extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, BelongsToTeam;
 
     protected $fillable = [
         'employee_number',
@@ -45,11 +46,6 @@ class Employee extends Model
     public function workSchedule()
     {
         return $this->belongsTo(WorkSchedule::class);
-    }
-
-    public function team()
-    {
-        return $this->belongsTo(Team::class);
     }
 
     public function attendances()
