@@ -8,7 +8,7 @@ use Filament\Widgets\ChartWidget;
 
 class AttendanceTrendChart extends ChartWidget
 {
-    protected static ?string $heading = '30-Day Attendance Trend';
+    protected ?string $heading = '30-Day Attendance Trend';
     protected static ?int $sort = 3;
     protected int | string | array $columnSpan = 'full';
     
