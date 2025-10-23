@@ -190,7 +190,8 @@ protected int | string | array $columnSpan = 'full';
 ### Customizing Widget Heading
 
 ```php
-protected static ?string $heading = 'Your Custom Heading';
+// In Filament v4, the $heading property must NOT be static
+protected ?string $heading = 'Your Custom Heading';
 ```
 
 ## Technical Implementation
