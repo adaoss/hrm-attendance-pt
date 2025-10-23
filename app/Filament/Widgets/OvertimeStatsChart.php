@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class OvertimeStatsChart extends ChartWidget
 {
-    protected static ?string $heading = 'Top 10 Overtime Hours (Current Month)';
+    protected ?string $heading = 'Top 10 Overtime Hours (Current Month)';
     protected static ?int $sort = 5;
     
     protected function getData(): array

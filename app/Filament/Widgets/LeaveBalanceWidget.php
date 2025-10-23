@@ -10,7 +10,7 @@ use Filament\Widgets\StatsOverviewWidget\Stat;
 
 class LeaveBalanceWidget extends BaseWidget
 {
-    protected static ?string $heading = 'Leave Management Overview';
+    protected ?string $heading = 'Leave Management Overview';
     protected static ?int $sort = 4;
     
     protected function getStats(): array
